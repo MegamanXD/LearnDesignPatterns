@@ -1,13 +1,15 @@
 import Builder.*;
-import Factory.Person;
-import Factory.PersonFactory;
-import Iterator.StudentList;
-import Singleton.SunSingleton;
+import Facade.*;
+import Factory.*;
+import Iterator.*;
+import Singleton.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    // Source: https://www.tutorialspoint.com/design_pattern/index.htm
+
     public static void main(String[] args) {
         //1. Singleton
         SunSingleton sun1 = SunSingleton.getInstance();
@@ -47,11 +49,17 @@ public class Main {
         //4. Builder
         Hero mage = new Hero.Builder("Heo", Profession.MAGE)
                 .setArmor(Armor.LIGHT)
-                .setHairColor(HairColor.BLACK)
-                .setHairType(HairType.STRAIGHT)
                 .setHWeapon(Weapon.WAND)
                 .build();
 
-        System.out.println("//4. Builder\n" + mage);
+        System.out.println("//4. Builder\n" + mage + "\n");
+
+        //5. Facade
+        ShapeMaker shapeMaker = new ShapeMaker();
+
+        System.out.println("//5. Facade");
+        shapeMaker.drawRectangle();
+        shapeMaker.drawCircle();
+        shapeMaker.drawParabola();
     }
 }
